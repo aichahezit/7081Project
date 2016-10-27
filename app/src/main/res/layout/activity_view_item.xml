@@ -9,5 +9,109 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="bcit.aicha.hezit.a7081project.Activites.ViewItemActivity">
+    <TextView
+        android:text="Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/enterTitleText2"
+        android:textSize="24sp" />
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterTitleText2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textViewView2"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/textViewView2"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/round_text"
+        android:id="@+id/editTextView"
+        android:singleLine="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textViewView4"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/textViewView4"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editTextView4"
+        android:background="@drawable/round_text"
+        android:singleLine="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextView4"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textViewView5"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/round_text"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextView5"
+        android:layout_below="@+id/textViewView5"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextView5"
+        android:layout_alignEnd="@+id/textViewView5"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textViewView6"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/round_text"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextView6"
+        android:layout_below="@+id/textViewView6"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
+
+    <Button
+        android:text="Delete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/deleteBtn"
+        android:background="@drawable/rounded_button"/>
 </RelativeLayout>

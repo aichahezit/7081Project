@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#EBF5FB"
     tools:context="bcit.aicha.hezit.a7081project.Activites.ViewItemActivity">
     <TextView
         android:text="Title"
@@ -29,15 +30,15 @@
         android:id="@+id/textViewView2"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_below="@+id/textViewView2"
         android:layout_alignParentStart="true"
-        android:background="@drawable/round_text"
         android:id="@+id/editTextView"
+        android:onClick="editItem"
         android:singleLine="true" />
 
     <TextView
@@ -51,7 +52,7 @@
         android:id="@+id/textViewView4"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:inputType="textPersonName"
@@ -59,7 +60,7 @@
         android:layout_below="@+id/textViewView4"
         android:layout_alignParentStart="true"
         android:id="@+id/editTextView4"
-        android:background="@drawable/round_text"
+        android:onClick="editItem"
         android:singleLine="true" />
 
     <TextView
@@ -73,15 +74,15 @@
         android:id="@+id/textViewView5"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/round_text"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editTextView5"
         android:layout_below="@+id/textViewView5"
         android:layout_alignParentStart="true"
+        android:onClick="editItem"
         android:singleLine="true" />
 
     <TextView
@@ -95,15 +96,15 @@
         android:id="@+id/textViewView6"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/round_text"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editTextView6"
         android:layout_below="@+id/textViewView6"
         android:layout_alignParentStart="true"
+        android:onClick="editItem"
         android:singleLine="true" />
 
     <Button
@@ -113,5 +114,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/deleteBtn"
-        android:background="@drawable/rounded_button"/>
+        android:background="@drawable/rounded_button"
+        android:onClick="deleteItem" />
 </RelativeLayout>

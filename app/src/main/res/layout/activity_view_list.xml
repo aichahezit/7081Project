@@ -10,4 +10,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="bcit.aicha.hezit.a7081project.Activites.ViewListActivity">
 
+    <TextView
+        android:text="Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:id="@+id/listTitle" />
+
+    <ListView
+        android:id="@+id/itemListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/listTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
 </RelativeLayout>

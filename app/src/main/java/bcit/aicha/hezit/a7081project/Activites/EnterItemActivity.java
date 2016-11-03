@@ -3,7 +3,9 @@ package bcit.aicha.hezit.a7081project.Activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bcit.aicha.hezit.a7081project.R;
 
@@ -62,6 +64,13 @@ public class EnterItemActivity extends AppCompatActivity {
             default:
                 //patient
         }
+    }
+
+    public void saveItem(View v){
+        Toast.makeText(this, "Item saved.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ViewListActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, type);
+        startActivity(intent);
     }
 
 }

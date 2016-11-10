@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,11 @@ public class ViewListActivity extends AppCompatActivity {
     private String type;
     private TextView title;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_view_list);
 
         title = (TextView)findViewById(R.id.listTitle);
@@ -79,4 +80,34 @@ public class ViewListActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void addItem(View v){
+        Toast.makeText(this, "Item added.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EnterItemActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, type);
+        startActivity(intent);
+    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.mainmenu, menu);
+//        return true;
+//    }
+//
+//    /**
+//     * Let's the user tap the activity icon to go 'home'.
+//     * Requires setHomeButtonEnabled() in onCreate().
+//     */
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        switch (menuItem.getItemId()) {
+//            case android.R.id.home:
+//                // ProjectsActivity is my 'home' activity
+//                Intent intent = new Intent(this, MainActivity.class);
+//                startActivity(intent);
+//                return true;
+//        }
+//        return (super.onOptionsItemSelected(menuItem));
+//    }
 }

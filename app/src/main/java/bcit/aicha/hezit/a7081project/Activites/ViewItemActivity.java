@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bcit.aicha.hezit.a7081project.R;
 
@@ -25,7 +26,8 @@ public class ViewItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_view_item);
 
         title = (TextView)findViewById(R.id.enterTitleText2);
@@ -87,6 +89,7 @@ public class ViewItemActivity extends AppCompatActivity {
     }
 
     public void deleteItem(View v){
+        Toast.makeText(this, "Item deleted.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ViewListActivity.class);
         intent.putExtra(EXTRA_MESSAGE, type);
         startActivity(intent);

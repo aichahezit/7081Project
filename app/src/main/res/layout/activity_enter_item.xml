@@ -18,15 +18,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/enterTitleText"
-        android:textSize="24sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/enterTitleText"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/textView2"
         android:textSize="18sp" />
@@ -44,11 +44,11 @@
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/textView4"
         android:textSize="18sp" />
@@ -66,22 +66,22 @@
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText4"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/textView5"
         android:textSize="18sp" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText5"
         android:layout_alignEnd="@+id/textView5"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/textView6"
         android:textSize="18sp" />
@@ -112,9 +112,10 @@
         android:text="Save"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:id="@+id/saveBtn"
         android:background="@drawable/rounded_button"
-        android:onClick="saveItem" />
+        android:onClick="saveItem"
+        android:layout_below="@+id/editText6"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

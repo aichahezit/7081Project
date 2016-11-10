@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activites.MainActivity">
@@ -15,9 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activites.ViewItemActivity" />
-        <activity android:name=".Activites.ViewListActivity" />
-        <activity android:name=".Activites.EnterItemActivity"></activity>
+        <activity android:name=".Activites.ViewItemActivity" android:parentActivityName=".Activites.MainActivity" />
+        <activity android:name=".Activites.ViewListActivity" android:parentActivityName=".Activites.MainActivity"/>
+        <activity android:name=".Activites.EnterItemActivity" android:parentActivityName=".Activites.MainActivity"></activity>
     </application>
 
 </manifest>

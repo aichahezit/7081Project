@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#EBF5FB"
     tools:context="bcit.aicha.hezit.a7081project.Activites.ViewListActivity">
 
     <TextView
@@ -22,8 +23,20 @@
     <ListView
         android:id="@+id/itemListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/listTitle"
+        android:layout_above="@+id/addBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp" />
+
+    <Button
+        android:id="@+id/addBtn"
+        android:text="Add"
+        android:onClick="addItem"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

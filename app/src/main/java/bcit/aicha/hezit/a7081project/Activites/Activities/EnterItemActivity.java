@@ -15,6 +15,7 @@ import bcit.aicha.hezit.a7081project.Activites.Models.Visit;
 import bcit.aicha.hezit.a7081project.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import static bcit.aicha.hezit.a7081project.R.id.editText;
 
 public class EnterItemActivity extends AppCompatActivity {
 
@@ -28,6 +29,11 @@ public class EnterItemActivity extends AppCompatActivity {
     private TextView editText2;
     private TextView editText3;
     private TextView editText4;
+
+    private String editText1Condition;
+    private String editText2Condition;
+    private String editText3Condition;
+    private String editText4Condition;
 
     private DatabaseHelper dbHelper;
 
@@ -46,7 +52,7 @@ public class EnterItemActivity extends AppCompatActivity {
         subtitle3 = (TextView)findViewById(R.id.textView5);
         subtitle4 = (TextView)findViewById(R.id.textView6);
 
-        editText1 = (EditText)findViewById(R.id.editText);
+        editText1 = (EditText)findViewById(editText);
         editText2 = (EditText)findViewById(R.id.editText4);
         editText3 = (EditText)findViewById(R.id.editText5);
         editText4 = (EditText)findViewById(R.id.editText6);
@@ -63,9 +69,13 @@ public class EnterItemActivity extends AppCompatActivity {
                 subtitle3.setText("Gender");
                 subtitle4.setText("Address");
 
+                editText1Condition = "alpha";
+                editText2Condition = "date";
+                editText3Condition = "gender";
+                editText4Condition = "alphanum";
+
                 if(primaryKey != null){
                     User user = dbHelper.getUser(primaryKey);
-
                     editText1.setText(user.getName());
                     editText2.setText(user.getDOB());
                     editText3.setText(user.getGender());
@@ -80,6 +90,11 @@ public class EnterItemActivity extends AppCompatActivity {
                 subtitle2.setText("Specialty");
                 subtitle3.setText("Office Address");
                 subtitle4.setText("Comments");
+
+                editText1Condition = "alpha";
+                editText2Condition = "alpha";
+                editText3Condition = "alphanum";
+                editText4Condition = "alphanum";
 
                 if(primaryKey != null){
                     Doctor doctor = dbHelper.getDoctor(primaryKey);
@@ -98,6 +113,11 @@ public class EnterItemActivity extends AppCompatActivity {
                 subtitle2.setText("Date");
                 subtitle3.setText("Doctor");
                 subtitle4.setText("Comments");
+
+                editText1Condition = "alpha";
+                editText2Condition = "date";
+                editText3Condition = "alpha";
+                editText4Condition = "alphanum";
 
                 if(primaryKey != null){
                     Visit visit = dbHelper.getVisit(primaryKey);
@@ -118,6 +138,7 @@ public class EnterItemActivity extends AppCompatActivity {
     public void saveItem(View v){
 
         boolean fieldsFilled = true;
+        boolean validInput = true;
 
         if((editText1.getText().toString()).equals("")
                 || (editText2.getText().toString()).equals("")
@@ -126,7 +147,60 @@ public class EnterItemActivity extends AppCompatActivity {
             fieldsFilled = false;
         }
 
-        if(fieldsFilled) {
+        if(editText1Condition.equals("alpha")){
+            if(isAlpha(editText1.getText().toString()) == false){
+                validInput = false;
+                Toast.makeText(this, "Invalid first input, must be alphabet.", Toast.LENGTH_LONG).show();
+            }
+        }else if(editText1Condition.equals("gender")){
+            if(!(editText1.getText().toString().equals("male")) ||
+                    !(editText1.getText().toString().equals("female")) ){
+                validInput = false;
+                Toast.makeText(this, "Invalid first input, must be male or female.", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if(editText2Condition.equals("alpha")){
+            if(isAlpha(editText2.getText().toString()) == false){
+                validInput = false;
+                Toast.makeText(this, "Invalid second input, must be alphabet.", Toast.LENGTH_LONG).show();
+            }
+        }else if(editText2Condition.equals("gender")){
+            if(!(editText2.getText().toString().equals("male")) ||
+                    !(editText2.getText().toString().equals("female")) ){
+                validInput = false;
+                Toast.makeText(this, "Invalid second input, must be male or female.", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if(editText3Condition.equals("alpha")){
+            if(isAlpha(editText3.getText().toString()) == false){
+                validInput = false;
+                Toast.makeText(this, "Invalid third input, must be alphabet.", Toast.LENGTH_LONG).show();
+            }
+        }else if(editText3Condition.equals("gender")){
+            if(!(editText3.getText().toString().equals("male")) ||
+                    !(editText3.getText().toString().equals("female")) ){
+                validInput = false;
+                Toast.makeText(this, "Invalid third input, must be male or female.", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if(editText4Condition.equals("alpha")){
+            if(isAlpha(editText4.getText().toString()) == false){
+                validInput = false;
+                Toast.makeText(this, "Invalid fourth input, must be alphabet.", Toast.LENGTH_LONG).show();
+            }
+        }else if(editText4Condition.equals("gender")){
+            if(!(editText4.getText().toString().equals("male")) ||
+                    !(editText4.getText().toString().equals("female")) ){
+                validInput = false;
+                Toast.makeText(this, "Invalid fourth input, must be male or female.", Toast.LENGTH_LONG).show();
+            }
+        }
+
+
+        if(fieldsFilled && validInput) {
             Intent intent = new Intent(this, ViewListActivity.class);
 
             switch (type) {
@@ -196,6 +270,18 @@ public class EnterItemActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "All fields must be filled!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public boolean isAlpha(String name) {
+        char[] chars = name.toCharArray();
+
+        for (char c : chars) {
+            if(!Character.isLetter(c)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

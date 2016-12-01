@@ -1,4 +1,4 @@
-package bcit.aicha.hezit.a7081project.Activites;
+package bcit.aicha.hezit.a7081project.Activites.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import bcit.aicha.hezit.a7081project.Activites.Database.DatabaseHelper;
 import bcit.aicha.hezit.a7081project.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -22,6 +23,7 @@ public class ViewListActivity extends AppCompatActivity {
     private ListView lv;
     private String type;
     private TextView title;
+    DatabaseHelper db = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,10 @@ public class ViewListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         type = intent.getStringExtra(EXTRA_MESSAGE);
 
+        // Instanciating an array list (you don't need to do this,
+        // you already have yours).
+        List<String> itemList = new ArrayList<String>();
+
         switch(type){
             case "patient":
                 title.setText("Patients");
@@ -43,28 +49,38 @@ public class ViewListActivity extends AppCompatActivity {
 
             case "doctor":
                 title.setText("Doctors");
+
+                String[] doctors = db.getDoctorNames();
+
+                for(String name : doctors){
+                    itemList.add(name);
+                }
+
                 break;
 
             case "visit":
                 title.setText("Visits");
+
+                String[] visits = db.getVisitNames();
+
+                for(String name : visits){
+                    itemList.add(name);
+                }
                 break;
 
             default:
                 //patient
+                itemList.add("Item 1");
+                itemList.add("Item 2");
+                itemList.add("Item 3");
+                itemList.add("Item 4");
         }
 
-        // Instanciating an array list (you don't need to do this,
-        // you already have yours).
-        List<String> itemList = new ArrayList<String>();
-        itemList.add("Item 1");
-        itemList.add("Item 2");
-        itemList.add("Item 3");
-        itemList.add("Item 4");
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
                 itemList);
@@ -74,8 +90,10 @@ public class ViewListActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                String value = (String)lv.getItemAtPosition(position);
                 Intent intent = new Intent(ViewListActivity.this, ViewItemActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, type);
+                intent.putExtra("PRIMARY_KEY", value);
                 startActivity(intent);
             }
         });

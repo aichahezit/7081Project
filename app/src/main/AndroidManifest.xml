@@ -8,16 +8,16 @@
         android:label=""
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activites.MainActivity">
+        <activity android:name=".Activites.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activites.ViewItemActivity" android:parentActivityName=".Activites.MainActivity" />
-        <activity android:name=".Activites.ViewListActivity" android:parentActivityName=".Activites.MainActivity"/>
-        <activity android:name=".Activites.EnterItemActivity" android:parentActivityName=".Activites.MainActivity"></activity>
+        <activity android:name=".Activites.Activities.ViewItemActivity" android:parentActivityName=".Activites.Activities.MainActivity" />
+        <activity android:name=".Activites.Activities.ViewListActivity" android:parentActivityName=".Activites.Activities.MainActivity"/>
+        <activity android:name=".Activites.Activities.EnterItemActivity" android:parentActivityName=".Activites.Activities.MainActivity"></activity>
     </application>
 
 </manifest>

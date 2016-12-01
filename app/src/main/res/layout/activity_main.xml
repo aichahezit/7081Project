@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="#EBF5FB"
-    tools:context="bcit.aicha.hezit.a7081project.Activites.MainActivity">
+    tools:context="bcit.aicha.hezit.a7081project.Activites.Activities.MainActivity">
 
     <Button
         android:text="Patient Info"

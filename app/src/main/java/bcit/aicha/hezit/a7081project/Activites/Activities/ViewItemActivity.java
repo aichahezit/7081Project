@@ -1,4 +1,4 @@
-package bcit.aicha.hezit.a7081project.Activites;
+package bcit.aicha.hezit.a7081project.Activites.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import bcit.aicha.hezit.a7081project.Activites.Database.DatabaseHelper;
+import bcit.aicha.hezit.a7081project.Activites.Models.Doctor;
+import bcit.aicha.hezit.a7081project.Activites.Models.User;
+import bcit.aicha.hezit.a7081project.Activites.Models.Visit;
 import bcit.aicha.hezit.a7081project.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -23,6 +27,9 @@ public class ViewItemActivity extends AppCompatActivity {
     private TextView subtext2;
     private TextView subtext3;
     private TextView subtext4;
+
+    DatabaseHelper db = new DatabaseHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +51,7 @@ public class ViewItemActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         type = intent.getStringExtra(EXTRA_MESSAGE);
+        String primaryKey = intent.getStringExtra("PRIMARY_KEY");
 
         //temp data, replace with data from database
         subtext1.setText("Sample data");
@@ -59,6 +67,14 @@ public class ViewItemActivity extends AppCompatActivity {
                 subtitle2.setText("DOB");
                 subtitle3.setText("Gender");
                 subtitle4.setText("Address");
+
+                String users[] = db.checkForUser();
+                User user = db.getUser((users[0]));
+
+                subtext1.setText(user.getName());
+                subtext2.setText(user.getDOB());
+                subtext3.setText(user.getGender());
+                subtext4.setText(user.getAddress());
                 break;
 
             case "doctor":
@@ -67,14 +83,30 @@ public class ViewItemActivity extends AppCompatActivity {
                 subtitle2.setText("Specialty");
                 subtitle3.setText("Office Address");
                 subtitle4.setText("Comments");
+
+                Doctor doctor = db.getDoctor(primaryKey);
+
+                subtext1.setText(doctor.getName());
+                subtext2.setText(doctor.getSpecialty());
+                subtext3.setText(doctor.getAddress());
+                subtext4.setText(doctor.getComments());
+
                 break;
 
             case "visit":
                 title.setText("Visit Info");
-                subtitle1.setText("Date");
-                subtitle2.setText("Reason");
+                subtitle1.setText("Reason");
+                subtitle2.setText("Date");
                 subtitle3.setText("Doctor");
                 subtitle4.setText("Comments");
+
+                Visit visit = db.getVisit(primaryKey);
+
+                subtext1.setText(visit.getReason());
+                subtext2.setText(visit.getDate());
+                subtext3.setText(visit.getDoctor());
+                subtext4.setText(visit.getComments());
+
                 break;
 
             default:
@@ -85,10 +117,33 @@ public class ViewItemActivity extends AppCompatActivity {
     public void editItem(View v){
         Intent intent = new Intent(this, EnterItemActivity.class);
         intent.putExtra(EXTRA_MESSAGE, type);
+        intent.putExtra("PRIMARY_KEY", subtext1.getText().toString());
         startActivity(intent);
     }
 
     public void deleteItem(View v){
+        switch(type){
+            case "patient":
+
+                db.deleteUser(subtext1.getText().toString());
+
+                break;
+
+            case "doctor":
+
+                db.deleteDoctor(subtext1.getText().toString());
+
+                break;
+
+            case "visit":
+
+                db.deleteVisit(subtext1.getText().toString());
+
+                break;
+
+            default:
+                //patient
+        }
         Toast.makeText(this, "Item deleted.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ViewListActivity.class);
         intent.putExtra(EXTRA_MESSAGE, type);
